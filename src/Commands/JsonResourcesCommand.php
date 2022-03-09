@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Soyhuce\JsonResources\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class JsonResourcesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-json-resources';
 
     public $description = 'My command';
 

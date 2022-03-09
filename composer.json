@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "soyhuce/laravel-json-resources",
+    "description": "An opinionated JsonResource for Laravel",
     "keywords": [
-        ":vendor_name",
+        "soyhuce",
         "laravel",
-        ":package_slug"
+        "laravel-json-resources"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/soyhuce/laravel-json-resources",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Bastien Philippe",
+            "email": "bastien.philippe@soyhuce.fr",
             "role": "Developer"
         }
     ],
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Soyhuce\\JsonResources\\": "src",
+            "Soyhuce\\JsonResources\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Soyhuce\\JsonResources\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -60,10 +60,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Soyhuce\\JsonResources\\JsonResourcesServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "JsonResources": "Soyhuce\\JsonResources\\Facades\\JsonResources"
             }
         }
     },
