@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Soyhuce\JsonResources\Tests;
 
@@ -6,31 +6,29 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\JsonResources\JsonResourcesServiceProvider;
 
+/**
+ * @coversNothing
+ */
 class TestCase extends Orchestra
 {
     protected function setUp(): void
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Soyhuce\\JsonResources\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
+        $this->loadMigrationsFrom(__DIR__ . '/migrations');
+        Factory::guessFactoryNamesUsing(fn (string $modelName) => $modelName . 'Factory');
+
+        $this->withoutExceptionHandling();
     }
 
-    protected function getPackageProviders($app)
+    /**
+     * @param \Illuminate\Foundation\Application $app
+     * @return array<string>
+     */
+    protected function getPackageProviders($app): array
     {
         return [
             JsonResourcesServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-json-resources_table.php.stub';
-        $migration->up();
-        */
     }
 }

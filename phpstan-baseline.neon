@@ -1,0 +1,22 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Soyhuce\\\\JsonResources\\\\Database\\\\QueryLog\\:\\:getLogs\\(\\) should return array\\<array\\{query\\: string, bindings\\: array, time\\: int\\}\\> but returns array\\<int, non\\-empty\\-array\\<string, array\\|int\\|string\\>\\>\\.$#"
+			count: 1
+			path: src/Database/QueryLog.php
+
+		-
+			message: "#^Parameter \\#1 \\$query of static method Soyhuce\\\\JsonResources\\\\Exceptions\\\\DatabaseQueryDetected\\:\\:formatQuery\\(\\) expects array\\{query\\: string, bindings\\: array, time\\: int\\}, non\\-empty\\-array\\<string, array\\|int\\|string\\> given\\.$#"
+			count: 1
+			path: src/Exceptions/DatabaseQueryDetected.php
+
+		-
+			message: "#^Access to an undefined property Soyhuce\\\\JsonResources\\\\AnonymousResourceCollection\\:\\:\\$preserveKeys\\.$#"
+			count: 1
+			path: src/JsonResource.php
+
+		-
+			message: "#^Access to an undefined property Soyhuce\\\\JsonResources\\\\JsonResource\\:\\:\\$preserveKeys\\.$#"
+			count: 1
+			path: src/JsonResource.php
+

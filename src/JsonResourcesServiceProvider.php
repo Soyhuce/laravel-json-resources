@@ -1,25 +1,28 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Soyhuce\JsonResources;
 
+use Illuminate\Testing\TestResponse;
+use Soyhuce\JsonResources\Testing\TestResponseMixin;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Soyhuce\JsonResources\Commands\JsonResourcesCommand;
 
 class JsonResourcesServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
-            ->name('laravel-json-resources')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-json-resources_table')
-            ->hasCommand(JsonResourcesCommand::class);
+            ->name('json-resources')
+            ->hasConfigFile();
+    }
+
+    public function bootingPackage(): void
+    {
+        JsonResources::preventDatabaseQueries((bool) config('json-resource.forbid-database-queries'));
+        JsonResources::addClassHeader((bool) app()->environment('local', 'testing'));
+
+        if (app()->environment('local', 'testing')) {
+            TestResponse::mixin(new TestResponseMixin());
+        }
     }
 }
