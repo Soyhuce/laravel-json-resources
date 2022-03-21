@@ -2,10 +2,12 @@
 
 namespace Soyhuce\JsonResources\Tests;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Soyhuce\JsonResources\Tests\Fixtures\User;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResource;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourceWithFloat;
+use Soyhuce\JsonResources\Tests\Fixtures\UserResourceWithHash;
 
 /**
  * @covers \Soyhuce\JsonResources\JsonResource
@@ -108,5 +110,24 @@ class JsonResourceTest extends TestCase
                     'sqrt_id' => 1.4142,
                 ],
             ]);
+    }
+
+    /**
+     * @test
+     */
+    public function jsonResourceCanHaveDependencyInjected(): void
+    {
+        Route::get('users', function () {
+            return UserResourceWithHash::collection(User::orderBy('id')->get());
+        });
+
+        User::factory(2)->create();
+
+        $data = $this->getJson('users')
+            ->assertOk()
+            ->json('data');
+
+        $this->assertTrue(Hash::check($data[0]['id'], $data[0]['hash']));
+        $this->assertTrue(Hash::check($data[1]['id'], $data[1]['hash']));
     }
 }

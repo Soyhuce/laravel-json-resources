@@ -12,19 +12,15 @@ class ResourceCollection extends IlluminateResourceCollection
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @return array<mixed>|\Illuminate\Contracts\Support\Arrayable<array-key, mixed>|JsonSerializable
+     * @return array<array-key, mixed>|\Illuminate\Contracts\Support\Arrayable<array-key, mixed>|JsonSerializable
      */
     public function toArray($request)
     {
-        return $this->format() ?? parent::toArray($request);
-    }
+        if (method_exists($this, 'format')) {
+            return app()->call($this->format(...));
+        }
 
-    /**
-     * @return array<mixed>|null
-     */
-    public function format(): ?array
-    {
-        return null;
+        return parent::toArray($request);
     }
 
     public function jsonOptions(): int

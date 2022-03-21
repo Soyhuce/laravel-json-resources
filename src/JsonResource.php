@@ -2,10 +2,11 @@
 
 namespace Soyhuce\JsonResources;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Resources\Json\JsonResource as IlluminateJsonResource;
+use JsonSerializable;
 use ReflectionClass;
 use Soyhuce\JsonResources\Concerns\ConvertsToResponse;
-use function is_array;
 
 class JsonResource extends IlluminateJsonResource
 {
@@ -24,25 +25,15 @@ class JsonResource extends IlluminateJsonResource
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @return array<string, mixed>
+     * @return array<array-key, mixed>|\Illuminate\Contracts\Support\Arrayable<array-key, mixed>|JsonSerializable
      */
-    public function toArray($request): array
+    public function toArray($request): array|Arrayable|JsonSerializable
     {
-        return $this->format();
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function format(): array
-    {
-        if ($this->resource === null) {
-            return [];
+        if (method_exists($this, 'format')) {
+            return app()->call($this->format(...));
         }
 
-        return is_array($this->resource)
-            ? $this->resource
-            : $this->resource->toArray();
+        return parent::toArray($request);
     }
 
     public function jsonOptions(): int
