@@ -20,3 +20,13 @@ parameters:
 			count: 1
 			path: src/JsonResource.php
 
+		-
+			message: "#^Creating callable from a non\\-native method stdClass\\:\\:format\\(\\)\\.$#"
+			count: 1
+			path: src/JsonResource.php
+
+		-
+			message: "#^Creating callable from a non\\-native method stdClass\\:\\:format\\(\\)\\.$#"
+			count: 1
+			path: src/ResourceCollection.php
+

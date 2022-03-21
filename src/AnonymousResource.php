@@ -4,6 +4,8 @@ namespace Soyhuce\JsonResources;
 
 use BadMethodCallException;
 use Closure;
+use Illuminate\Contracts\Support\Arrayable;
+use JsonSerializable;
 use function call_user_func;
 
 /**
@@ -31,9 +33,9 @@ class AnonymousResource extends JsonResource
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<array-key, mixed>|\Illuminate\Contracts\Support\Arrayable<array-key, mixed>|JsonSerializable
      */
-    public function format(): array
+    public function format(): array|Arrayable|JsonSerializable
     {
         if ($this->resource === null) {
             return [];

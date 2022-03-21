@@ -2,18 +2,19 @@
 
 namespace Soyhuce\JsonResources\Tests\Fixtures;
 
+use Illuminate\Contracts\Hashing\Hasher;
 use Soyhuce\JsonResources\JsonResource;
 
 /**
  * @mixin \Soyhuce\JsonResources\Tests\Fixtures\User
  */
-class UserResourceWithFloat extends JsonResource
+class UserResourceWithHash extends JsonResource
 {
-    public function toArray($request): array
+    public function format(Hasher $hash): array
     {
         return [
             'id' => $this->id,
-            'sqrt_id' => round(sqrt($this->id), 4),
+            'hash' => $hash->make($this->id),
         ];
     }
 }
