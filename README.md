@@ -19,7 +19,7 @@ composer require soyhuce/laravel-json-resources
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-json-resources-config"
+php artisan vendor:publish --tag="json-resources-config"
 ```
 
 ## Usage
