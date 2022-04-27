@@ -2,6 +2,21 @@
 
 All notable changes to `laravel-json-resources` will be documented in this file.
 
+## 1.1.1 - 2022-04-27
+
+## What's Changed
+
+- Fix config tag name on README by @ElRochito in https://github.com/Soyhuce/laravel-json-resources/pull/3
+- Bump dependabot/fetch-metadata from 1.3.0 to 1.3.1 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/4
+- Fix configuration access by @bastien-phi in https://github.com/Soyhuce/laravel-json-resources/pull/5
+
+## New Contributors
+
+- @ElRochito made their first contribution in https://github.com/Soyhuce/laravel-json-resources/pull/3
+- @dependabot made their first contribution in https://github.com/Soyhuce/laravel-json-resources/pull/4
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-json-resources/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2022-03-21
 
 ## What's Changed
