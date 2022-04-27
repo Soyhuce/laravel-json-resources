@@ -18,7 +18,7 @@ class JsonResourcesServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        JsonResources::preventDatabaseQueries((bool) config('json-resource.forbid-database-queries'));
+        JsonResources::preventDatabaseQueries((bool) config('json-resources.forbid-database-queries'));
         JsonResources::addClassHeader((bool) app()->environment('local', 'testing'));
 
         if (app()->environment('local', 'testing')) {
