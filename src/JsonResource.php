@@ -12,13 +12,16 @@ class JsonResource extends IlluminateJsonResource
 {
     use ConvertsToResponse;
 
-    public static function collection($resource)
+    /**
+     * @return \Soyhuce\JsonResources\AnonymousResourceCollection<static>
+     */
+    public static function collection($resource): AnonymousResourceCollection
     {
         return tap(new AnonymousResourceCollection($resource, static::class), function ($collection): void {
             if (property_exists(static::class, 'preserveKeys')) {
                 $collection->preserveKeys = (new ReflectionClass(static::class))
-                    ->newInstanceWithoutConstructor()
-                    ->preserveKeys === true;
+                        ->newInstanceWithoutConstructor()
+                        ->preserveKeys === true;
             }
         });
     }
