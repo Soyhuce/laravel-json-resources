@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class DatabaseQueryDetected extends Exception
 {
     /**
-     * @param array<array{query: string, bindings: array<mixed>, time: int}> $queryLog
+     * @param array<array{query: string, bindings: array<int, mixed>, time: int}> $queryLog
      */
     public static function fromQueryLog(array $queryLog): self
     {
@@ -26,7 +26,7 @@ class DatabaseQueryDetected extends Exception
     }
 
     /**
-     * @param array{query: string, bindings: array<mixed>, time: int} $query
+     * @param array{query: string, bindings: array<int, mixed>, time: int} $query
      */
     protected static function formatQuery(array $query): string
     {
