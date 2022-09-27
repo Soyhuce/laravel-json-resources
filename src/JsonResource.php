@@ -13,6 +13,7 @@ class JsonResource extends IlluminateJsonResource
     use ConvertsToResponse;
 
     /**
+     * @param mixed $resource
      * @return \Soyhuce\JsonResources\AnonymousResourceCollection<static>
      */
     public static function collection($resource): AnonymousResourceCollection
@@ -20,7 +21,7 @@ class JsonResource extends IlluminateJsonResource
         return tap(new AnonymousResourceCollection($resource, static::class), function ($collection): void {
             if (property_exists(static::class, 'preserveKeys')) {
                 $collection->preserveKeys = (new ReflectionClass(static::class))
-                        ->newInstanceWithoutConstructor()
+                    ->newInstanceWithoutConstructor()
                         ->preserveKeys === true;
             }
         });
