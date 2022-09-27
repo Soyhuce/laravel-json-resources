@@ -2,7 +2,6 @@
 
 namespace Soyhuce\JsonResources\Tests;
 
-use BadMethodCallException;
 use Illuminate\Support\Facades\Route;
 use Soyhuce\JsonResources\AnonymousResource;
 use Soyhuce\JsonResources\Tests\Fixtures\User;
@@ -106,16 +105,30 @@ class AnonymousResourceTest extends TestCase
     /**
      * @test
      */
-    public function anonymousResourceCannotBeUsedOnCollections(): void
+    public function anonymousResourceCasUseAnonymousCollection(): void
     {
         Route::get('users', function () {
-            return AnonymousResource::collection(User::orderBy('id')->get());
+            return AnonymousResource::collection(User::orderBy('id')->get())
+                ->using(fn (User $user) => [
+                    'id' => $user->id,
+                    'email' => $user->email,
+                ]);
         });
 
-        $this->expectException(BadMethodCallException::class);
-        $this->expectExceptionMessage('collection on AnonymousResource is not supported.');
+        [$first, $second] = User::factory(2)->create();
 
-        $this->getJson('users');
+        $this->getJson('users')
+            ->assertOk()
+            ->assertJsonPath('data', [
+                [
+                    'id' => $first->id,
+                    'email' => $first->email,
+                ],
+                [
+                    'id' => $second->id,
+                    'email' => $second->email,
+                ],
+            ]);
     }
 
     /**
