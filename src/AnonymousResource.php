@@ -2,7 +2,6 @@
 
 namespace Soyhuce\JsonResources;
 
-use BadMethodCallException;
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
 use JsonSerializable;
@@ -13,7 +12,7 @@ use function call_user_func;
  */
 class AnonymousResource extends JsonResource
 {
-    private Closure $formatUsing;
+    protected Closure $formatUsing;
 
     /**
      * @param mixed $resource
@@ -27,9 +26,9 @@ class AnonymousResource extends JsonResource
         $this->formatUsing = $formatUsing ?? fn ($result) => $result;
     }
 
-    public static function collection($resource): void
+    public static function collection($resource): AnonymousCollection
     {
-        throw new BadMethodCallException('collection on AnonymousResource is not supported.');
+        return new AnonymousCollection($resource, EmptyAnonymousResource::class);
     }
 
     /**
