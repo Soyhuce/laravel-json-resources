@@ -13,4 +13,11 @@ class AnonymousResourceCollection extends IlluminateAnonymousResourceCollection
     {
         return $this->collects;
     }
+
+    public function each(callable $closure): static
+    {
+        $this->resource->each($closure);
+
+        return $this;
+    }
 }
