@@ -1,12 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:collection\\(\\) should return Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource\\<TType\\>, TType\\> but returns Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource, mixed\\>\\.$#"
-			count: 1
-			path: src/AnonymousResource.php
-
-		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:format\\(\\) should return array\\|Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|JsonSerializable but returns mixed\\.$#"
+			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:collection\\(\\) should return Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource\\<TCollectionType\\>, TCollectionType\\> but returns Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource, mixed\\>\\.$#"
 			count: 1
 			path: src/AnonymousResource.php
 
@@ -21,7 +16,7 @@ parameters:
 			path: src/Exceptions/DatabaseQueryDetected.php
 
 		-
-			message: "#^Parameter \\#2 \\$replace of static method Illuminate\\\\Support\\\\Str\\:\\:replaceArray\\(\\) expects array\\<int\\|string, string\\>, array\\<int, mixed\\> given\\.$#"
+			message: "#^Parameter \\#2 \\$replace of static method Illuminate\\\\Support\\\\Str\\:\\:replaceArray\\(\\) expects iterable\\<string\\>, array\\<int, mixed\\> given\\.$#"
 			count: 1
 			path: src/Exceptions/DatabaseQueryDetected.php
 

@@ -3,29 +3,28 @@
 namespace Soyhuce\JsonResources;
 
 use Closure;
+use function call_user_func;
 
 /**
- * @template T
- * @extends AnonymousResource<T>
+ * @template TType
  */
-class EmptyAnonymousResource extends AnonymousResource
+class EmptyAnonymousResource extends JsonResource
 {
-    /**
-     * @phpstan-param T|null $resource
-     * @param mixed $resource
-     */
-    public function __construct($resource)
-    {
-        parent::__construct($resource);
-    }
+    /** @var \Closure(TType): mixed */
+    protected Closure $formatUsing;
 
     /**
-     * @param \Closure(T): array<string, mixed> $formatUsing
+     * @param \Closure(TType): mixed $formatUsing
      */
     public function using(Closure $formatUsing): static
     {
         $this->formatUsing = $formatUsing;
 
         return $this;
+    }
+
+    public function format(): mixed
+    {
+        return call_user_func($this->formatUsing, $this->resource);
     }
 }

@@ -22,7 +22,7 @@ class JsonResource extends IlluminateJsonResource
             if (property_exists(static::class, 'preserveKeys')) {
                 $collection->preserveKeys = (new ReflectionClass(static::class))
                     ->newInstanceWithoutConstructor()
-                        ->preserveKeys === true;
+                    ->preserveKeys === true;
             }
         });
     }

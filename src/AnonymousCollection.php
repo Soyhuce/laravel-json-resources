@@ -12,7 +12,7 @@ use Closure;
 class AnonymousCollection extends AnonymousResourceCollection
 {
     /**
-     * @param \Closure(TType): array<string, mixed> $formatUsing
+     * @param \Closure(TType): mixed $formatUsing
      * @return $this
      */
     public function using(Closure $formatUsing): static
