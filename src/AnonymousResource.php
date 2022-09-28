@@ -3,21 +3,19 @@
 namespace Soyhuce\JsonResources;
 
 use Closure;
-use Illuminate\Contracts\Support\Arrayable;
-use JsonSerializable;
 use function call_user_func;
 
 /**
- * @template T
+ * @template TType
  */
 class AnonymousResource extends JsonResource
 {
-    /** @var \Closure(T): array<array-key, mixed> */
+    /** @var \Closure(TType): mixed */
     protected Closure $formatUsing;
 
     /**
-     * @param T|null $resource
-     * @param \Closure(T): array<array-key, mixed>|null $formatUsing
+     * @param TType|null $resource
+     * @param \Closure(TType): mixed|null $formatUsing
      */
     public function __construct($resource, ?Closure $formatUsing = null)
     {
@@ -27,19 +25,16 @@ class AnonymousResource extends JsonResource
     }
 
     /**
-     * @template TType
-     * @param array<array-key, TType|null>|\Illuminate\Support\Collection<array-key, TType|null> $resource
-     * @return \Soyhuce\JsonResources\AnonymousCollection<EmptyAnonymousResource<TType>, TType>
+     * @template TCollectionType
+     * @param array<array-key, TCollectionType>|\Illuminate\Pagination\AbstractPaginator|\Illuminate\Support\Collection<array-key, TCollectionType> $resource
+     * @return \Soyhuce\JsonResources\AnonymousCollection<EmptyAnonymousResource<TCollectionType>, TCollectionType>
      */
     public static function collection($resource): AnonymousCollection
     {
         return new AnonymousCollection($resource, EmptyAnonymousResource::class);
     }
 
-    /**
-     * @return array<array-key, mixed>|\Illuminate\Contracts\Support\Arrayable<array-key, mixed>|JsonSerializable
-     */
-    public function format(): array|Arrayable|JsonSerializable
+    public function format(): mixed
     {
         if ($this->resource === null) {
             return [];
