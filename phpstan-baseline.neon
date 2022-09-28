@@ -6,12 +6,22 @@ parameters:
 			path: src/AnonymousResource.php
 
 		-
+			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:format\\(\\) should return array\\|Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|JsonSerializable but returns mixed\\.$#"
+			count: 1
+			path: src/AnonymousResource.php
+
+		-
 			message: "#^Method Soyhuce\\\\JsonResources\\\\Database\\\\QueryLog\\:\\:getLogs\\(\\) should return array\\<array\\{query\\: string, bindings\\: array, time\\: int\\}\\> but returns array\\<int, non\\-empty\\-array\\<string, array\\|int\\|string\\>\\>\\.$#"
 			count: 1
 			path: src/Database/QueryLog.php
 
 		-
 			message: "#^Parameter \\#1 \\$query of static method Soyhuce\\\\JsonResources\\\\Exceptions\\\\DatabaseQueryDetected\\:\\:formatQuery\\(\\) expects array\\{query\\: string, bindings\\: array\\<int, mixed\\>, time\\: int\\}, non\\-empty\\-array\\<string, array\\<int, mixed\\>\\|int\\|string\\> given\\.$#"
+			count: 1
+			path: src/Exceptions/DatabaseQueryDetected.php
+
+		-
+			message: "#^Parameter \\#2 \\$replace of static method Illuminate\\\\Support\\\\Str\\:\\:replaceArray\\(\\) expects array\\<int\\|string, string\\>, array\\<int, mixed\\> given\\.$#"
 			count: 1
 			path: src/Exceptions/DatabaseQueryDetected.php
 
@@ -31,7 +41,22 @@ parameters:
 			path: src/JsonResource.php
 
 		-
+			message: "#^Method Soyhuce\\\\JsonResources\\\\JsonResource\\:\\:collection\\(\\) should return Soyhuce\\\\JsonResources\\\\AnonymousResourceCollection\\<static\\(Soyhuce\\\\JsonResources\\\\JsonResource\\)\\> but returns Soyhuce\\\\JsonResources\\\\AnonymousResourceCollection\\<mixed\\>\\.$#"
+			count: 1
+			path: src/JsonResource.php
+
+		-
+			message: "#^Method Soyhuce\\\\JsonResources\\\\JsonResource\\:\\:toArray\\(\\) should return array\\|Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|JsonSerializable but returns mixed\\.$#"
+			count: 1
+			path: src/JsonResource.php
+
+		-
 			message: "#^Creating callable from a non\\-native method stdClass\\:\\:format\\(\\)\\.$#"
+			count: 1
+			path: src/ResourceCollection.php
+
+		-
+			message: "#^Method Soyhuce\\\\JsonResources\\\\ResourceCollection\\:\\:toArray\\(\\) should return array\\|Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|JsonSerializable but returns mixed\\.$#"
 			count: 1
 			path: src/ResourceCollection.php
 
