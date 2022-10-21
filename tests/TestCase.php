@@ -2,7 +2,9 @@
 
 namespace Soyhuce\JsonResources\Tests;
 
+use ErrorException;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDeprecationHandling;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\JsonResources\JsonResourcesServiceProvider;
 
@@ -11,6 +13,8 @@ use Soyhuce\JsonResources\JsonResourcesServiceProvider;
  */
 class TestCase extends Orchestra
 {
+    use InteractsWithDeprecationHandling;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -19,6 +23,7 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(fn (string $modelName) => $modelName . 'Factory');
 
         $this->withoutExceptionHandling();
+        $this->withoutDeprecationHandling();
     }
 
     /**
@@ -30,5 +35,22 @@ class TestCase extends Orchestra
         return [
             JsonResourcesServiceProvider::class,
         ];
+    }
+
+    protected function withoutDeprecationHandling(): static
+    {
+        if ($this->originalDeprecationHandler == null) {
+            $this->originalDeprecationHandler = set_error_handler(function ($level, $message, $file = '', $line = 0) {
+                if (in_array($level, [E_DEPRECATED, E_USER_DEPRECATED]) || (error_reporting() & $level)) {
+                    // Ignore fakerphp deprecations
+                    if (str_starts_with($file, realpath(__DIR__ . '/../vendor/fakerphp'))) {
+                        return;
+                    }
+                    throw new ErrorException($message, 0, $level, $file, $line);
+                }
+            });
+        }
+
+        return $this;
     }
 }
