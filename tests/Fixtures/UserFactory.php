@@ -18,6 +18,6 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        return ['email' => $this->faker->safeEmail];
+        return ['email' => $this->faker->safeEmail()];
     }
 }
