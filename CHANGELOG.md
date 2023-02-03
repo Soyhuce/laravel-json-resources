@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-json-resources` will be documented in this file.
 
+## 1.4.0 - 2023-02-03
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/13
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/14
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/15
+- Laravel 10 support by @bastien-phi in https://github.com/Soyhuce/laravel-json-resources/pull/16
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-json-resources/compare/1.3.0...1.4.0
+
 ## 1.3.0 - 2022-10-21
 
 ### What's Changed
