@@ -10,12 +10,12 @@ use function call_user_func;
  */
 class AnonymousResource extends JsonResource
 {
-    /** @var \Closure(TType): mixed */
+    /** @var Closure(TType): mixed */
     protected Closure $formatUsing;
 
     /**
      * @param TType|null $resource
-     * @param \Closure(TType): mixed|null $formatUsing
+     * @param Closure(TType): mixed|null $formatUsing
      */
     public function __construct($resource, ?Closure $formatUsing = null)
     {
