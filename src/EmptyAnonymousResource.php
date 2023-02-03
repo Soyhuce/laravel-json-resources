@@ -10,11 +10,11 @@ use function call_user_func;
  */
 class EmptyAnonymousResource extends JsonResource
 {
-    /** @var \Closure(TType): mixed */
+    /** @var Closure(TType): mixed */
     protected Closure $formatUsing;
 
     /**
-     * @param \Closure(TType): mixed $formatUsing
+     * @param Closure(TType): mixed $formatUsing
      */
     public function using(Closure $formatUsing): static
     {
