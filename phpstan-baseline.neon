@@ -1,29 +1,19 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:collection\\(\\) has parameter \\$resource with generic class Illuminate\\\\Pagination\\\\AbstractPaginator but does not specify its types\\: TValue$#"
+			count: 1
+			path: src/AnonymousResource.php
+
+		-
 			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:collection\\(\\) should return Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource\\<TCollectionType\\>, TCollectionType\\> but returns Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource, mixed\\>\\.$#"
 			count: 1
 			path: src/AnonymousResource.php
 
 		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\Database\\\\QueryLog\\:\\:getLogs\\(\\) should return array\\<array\\{query\\: string, bindings\\: array, time\\: int\\}\\> but returns array\\<int, non\\-empty\\-array\\<string, array\\|int\\|string\\>\\>\\.$#"
-			count: 1
-			path: src/Database/QueryLog.php
-
-		-
-			message: "#^Parameter \\#1 \\$query of static method Soyhuce\\\\JsonResources\\\\Exceptions\\\\DatabaseQueryDetected\\:\\:formatQuery\\(\\) expects array\\{query\\: string, bindings\\: array\\<int, mixed\\>, time\\: int\\}, non\\-empty\\-array\\<string, array\\<int, mixed\\>\\|int\\|string\\> given\\.$#"
-			count: 1
-			path: src/Exceptions/DatabaseQueryDetected.php
-
-		-
 			message: "#^Parameter \\#2 \\$replace of static method Illuminate\\\\Support\\\\Str\\:\\:replaceArray\\(\\) expects iterable\\<string\\>, array\\<int, mixed\\> given\\.$#"
 			count: 1
 			path: src/Exceptions/DatabaseQueryDetected.php
-
-		-
-			message: "#^Access to an undefined property Soyhuce\\\\JsonResources\\\\AnonymousResourceCollection\\<mixed\\>\\:\\:\\$preserveKeys\\.$#"
-			count: 1
-			path: src/JsonResource.php
 
 		-
 			message: "#^Access to an undefined property Soyhuce\\\\JsonResources\\\\JsonResource\\:\\:\\$preserveKeys\\.$#"
