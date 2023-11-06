@@ -16,7 +16,7 @@ class ResourceClassHeaderTest extends TestCase
      */
     public function responseCanAssertUsedResource(): void
     {
-        Route::get('users/{id}', fn($id) => UserResource::make(User::find($id)));
+        Route::get('users/{id}', fn ($id) => UserResource::make(User::find($id)));
 
         $user = User::factory()->createOne();
 
@@ -29,7 +29,7 @@ class ResourceClassHeaderTest extends TestCase
      */
     public function responseCanAssertUsedResourceOnCollection(): void
     {
-        Route::get('users', fn() => UserResource::collection(User::orderBy('id')->get()));
+        Route::get('users', fn () => UserResource::collection(User::orderBy('id')->get()));
 
         User::factory(2)->create();
 

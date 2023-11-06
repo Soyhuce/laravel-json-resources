@@ -17,7 +17,7 @@ class AnonymousResourceTest extends TestCase
      */
     public function responseIsCorrectlyFormattedForMake(): void
     {
-        Route::get('users/{id}', fn($id) => AnonymousResource::make(
+        Route::get('users/{id}', fn ($id) => AnonymousResource::make(
             User::find($id),
             fn (User $user): array => [
                 'id' => $user->id,
@@ -40,7 +40,7 @@ class AnonymousResourceTest extends TestCase
      */
     public function nullIsCorrectlyTreatedForRootResource(): void
     {
-        Route::get('users/{id}', fn($id) => AnonymousResource::make(
+        Route::get('users/{id}', fn ($id) => AnonymousResource::make(
             null,
             fn (User $user): array => [
                 'id' => $user->id,
@@ -83,7 +83,7 @@ class AnonymousResourceTest extends TestCase
      */
     public function innerAnonymousWithNullIsCorrectlyTreated(): void
     {
-        Route::get('users/{id}', fn($id) => UserWithNameResource::make(User::find($id)));
+        Route::get('users/{id}', fn ($id) => UserWithNameResource::make(User::find($id)));
 
         $user = User::factory()->createOne();
 
@@ -101,7 +101,7 @@ class AnonymousResourceTest extends TestCase
      */
     public function anonymousResourceCasUseAnonymousCollection(): void
     {
-        Route::get('users', fn() => AnonymousResource::collection(User::orderBy('id')->get())
+        Route::get('users', fn () => AnonymousResource::collection(User::orderBy('id')->get())
             ->using(fn (User $user) => [
                 'id' => $user->id,
                 'email' => $user->email,
@@ -152,7 +152,7 @@ class AnonymousResourceTest extends TestCase
      */
     public function resourcePreservesZeroFraction(): void
     {
-        Route::get('test', fn() => AnonymousResource::make([
+        Route::get('test', fn () => AnonymousResource::make([
             'one_half' => 0.5,
             'one' => 1.0,
         ]));
