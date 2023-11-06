@@ -7,10 +7,10 @@ use function count;
 
 class QueryLog
 {
-    private bool $wasLogging;
+    private readonly bool $wasLogging;
 
     /** @var array<array{query: string, bindings: array<mixed>, time: int}> */
-    private array $initialLog;
+    private readonly array $initialLog;
 
     /** @var array<array{query: string, bindings: array<mixed>, time: int}> */
     private array $finalLog;
