@@ -25,7 +25,7 @@ class ResourceCollectionTest extends TestCase
      */
     public function responseIsCorrectlyFormattedForCollectionWithResourceDiscovery(): void
     {
-        Route::get('users', fn() => UserResourceCollection::make(User::orderBy('id')->get()));
+        Route::get('users', fn () => UserResourceCollection::make(User::orderBy('id')->get()));
 
         $first = User::factory()->createOne();
         $second = User::factory()->createOne();
@@ -49,7 +49,7 @@ class ResourceCollectionTest extends TestCase
      */
     public function responseIsCorrectlyFormattedForCollectionWithoutResourceDiscovery(): void
     {
-        Route::get('users', fn() => UserResourceCollectionWithFloat::make(User::orderBy('id')->get()));
+        Route::get('users', fn () => UserResourceCollectionWithFloat::make(User::orderBy('id')->get()));
 
         $first = User::factory()->createOne();
         $second = User::factory()->createOne();

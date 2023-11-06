@@ -28,7 +28,7 @@ class PreventDatabaseQueriesTest extends TestCase
      */
     public function noQueryIsAllowedUsingMake(): void
     {
-        Route::get('users/{id}', fn($id) => UserResourcePerformingQueries::make(User::find($id)));
+        Route::get('users/{id}', fn ($id) => UserResourcePerformingQueries::make(User::find($id)));
 
         $user = User::factory()->createOne();
 
@@ -48,7 +48,7 @@ class PreventDatabaseQueriesTest extends TestCase
      */
     public function noQueryIsAllowedUsingCollection(): void
     {
-        Route::get('users', fn() => UserResourcePerformingQueries::collection(User::all()));
+        Route::get('users', fn () => UserResourcePerformingQueries::collection(User::all()));
 
         [$first, $second] = User::factory(2)->create();
 
@@ -69,7 +69,7 @@ class PreventDatabaseQueriesTest extends TestCase
      */
     public function noQueryIsAllowedUsingPaginate(): void
     {
-        Route::get('users', fn() => UserResourcePerformingQueries::collection(User::paginate()));
+        Route::get('users', fn () => UserResourcePerformingQueries::collection(User::paginate()));
 
         [$first, $second] = User::factory(2)->create();
 
@@ -90,7 +90,7 @@ class PreventDatabaseQueriesTest extends TestCase
      */
     public function noQueryIsAllowedUsingResourceCollection(): void
     {
-        Route::get('users', fn() => UserResourceCollectionPerformingQuery::make(User::all()));
+        Route::get('users', fn () => UserResourceCollectionPerformingQuery::make(User::all()));
 
         User::factory(2)->create();
 
@@ -112,7 +112,7 @@ class PreventDatabaseQueriesTest extends TestCase
     {
         JsonResources::allowDatabaseQueries();
 
-        Route::get('users/{id}', fn($id) => UserResourcePerformingQueries::make(User::find($id)));
+        Route::get('users/{id}', fn ($id) => UserResourcePerformingQueries::make(User::find($id)));
 
         $user = User::factory()->createOne();
 
@@ -162,7 +162,7 @@ class PreventDatabaseQueriesTest extends TestCase
     public function queryLogIsRespected(): void
     {
         DB::enableQueryLog();
-        Route::get('users/{id}', fn($id) => UserResource::make(User::find($id)));
+        Route::get('users/{id}', fn ($id) => UserResource::make(User::find($id)));
 
         $user = User::factory()->createOne();
 
@@ -181,7 +181,7 @@ class PreventDatabaseQueriesTest extends TestCase
     public function queryLogIsRespectedButCanFail(): void
     {
         DB::enableQueryLog();
-        Route::get('users/{id}', fn($id) => UserResourcePerformingQueries::make(User::find($id)));
+        Route::get('users/{id}', fn ($id) => UserResourcePerformingQueries::make(User::find($id)));
 
         $user = User::factory()->createOne();
 

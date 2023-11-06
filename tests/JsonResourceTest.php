@@ -21,7 +21,7 @@ class JsonResourceTest extends TestCase
      */
     public function responseIsCorrectlyFormattedForMake(): void
     {
-        Route::get('users/{id}', fn($id) => UserResource::make(User::find($id)));
+        Route::get('users/{id}', fn ($id) => UserResource::make(User::find($id)));
 
         $user = User::factory()->createOne();
 
@@ -38,7 +38,7 @@ class JsonResourceTest extends TestCase
      */
     public function responseIsCorrectlyFormattedForCollection(): void
     {
-        Route::get('users', fn() => UserResource::collection(User::orderBy('id')->get()));
+        Route::get('users', fn () => UserResource::collection(User::orderBy('id')->get()));
 
         $first = User::factory()->createOne();
         $second = User::factory()->createOne();
@@ -62,7 +62,7 @@ class JsonResourceTest extends TestCase
      */
     public function responseIsCorrectlyFormattedForPagination(): void
     {
-        Route::get('users', fn() => UserResource::collection(User::orderBy('id')->paginate()));
+        Route::get('users', fn () => UserResource::collection(User::orderBy('id')->paginate()));
 
         $first = User::factory()->createOne();
         $second = User::factory()->createOne();
@@ -87,7 +87,7 @@ class JsonResourceTest extends TestCase
      */
     public function responseIsHasZeroFractionPreserved(): void
     {
-        Route::get('users', fn() => UserResourceWithFloat::collection(User::orderBy('id')->get()));
+        Route::get('users', fn () => UserResourceWithFloat::collection(User::orderBy('id')->get()));
 
         $first = User::factory()->createOne();
         $second = User::factory()->createOne();
@@ -111,7 +111,7 @@ class JsonResourceTest extends TestCase
      */
     public function jsonResourceCanHaveDependencyInjected(): void
     {
-        Route::get('users', fn() => UserResourceWithHash::collection(User::orderBy('id')->get()));
+        Route::get('users', fn () => UserResourceWithHash::collection(User::orderBy('id')->get()));
 
         User::factory(2)->create();
 
@@ -128,7 +128,7 @@ class JsonResourceTest extends TestCase
      */
     public function eachResourceCanBeCalled(): void
     {
-        Route::get('users', fn() => UserResourceWithMethod::collection(User::orderBy('id')->get())
+        Route::get('users', fn () => UserResourceWithMethod::collection(User::orderBy('id')->get())
             ->each(fn (UserResourceWithMethod $resource) => $resource->capitalizeEmail()));
 
         [$first, $second] = User::factory(2)->create();
