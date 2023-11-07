@@ -17,13 +17,16 @@ class AnonymousResourceTest extends TestCase
      */
     public function responseIsCorrectlyFormattedForMake(): void
     {
-        Route::get('users/{id}', fn ($id) => AnonymousResource::make(
-            User::find($id),
-            fn (User $user): array => [
-                'id' => $user->id,
-                'email' => $user->email,
-            ]
-        ));
+        Route::get(
+            'users/{id}',
+            fn ($id) => AnonymousResource::make(
+                User::find($id),
+                fn (User $user): array => [
+                    'id' => $user->id,
+                    'email' => $user->email,
+                ]
+            )
+        );
 
         $user = User::factory()->createOne();
 
@@ -40,13 +43,16 @@ class AnonymousResourceTest extends TestCase
      */
     public function nullIsCorrectlyTreatedForRootResource(): void
     {
-        Route::get('users/{id}', fn ($id) => AnonymousResource::make(
-            null,
-            fn (User $user): array => [
-                'id' => $user->id,
-                'email' => $user->email,
-            ]
-        ));
+        Route::get(
+            'users/{id}',
+            fn ($id) => AnonymousResource::make(
+                null,
+                fn (User $user): array => [
+                    'id' => $user->id,
+                    'email' => $user->email,
+                ]
+            )
+        );
 
         $this->getJson('users/1')
             ->assertOk()
@@ -58,12 +64,15 @@ class AnonymousResourceTest extends TestCase
      */
     public function innerAnonymousIsCorrectlyTreated(): void
     {
-        Route::get('users/{id}', function ($id) {
-            $user = User::find($id);
-            $user->name = 'John Doe';
+        Route::get(
+            'users/{id}',
+            function ($id) {
+                $user = User::find($id);
+                $user->name = 'John Doe';
 
-            return UserWithNameResource::make($user);
-        });
+                return UserWithNameResource::make($user);
+            }
+        );
 
         $user = User::factory()->createOne();
 
@@ -83,7 +92,10 @@ class AnonymousResourceTest extends TestCase
      */
     public function innerAnonymousWithNullIsCorrectlyTreated(): void
     {
-        Route::get('users/{id}', fn ($id) => UserWithNameResource::make(User::find($id)));
+        Route::get(
+            'users/{id}',
+            fn ($id) => UserWithNameResource::make(User::find($id))
+        );
 
         $user = User::factory()->createOne();
 
@@ -101,11 +113,14 @@ class AnonymousResourceTest extends TestCase
      */
     public function anonymousResourceCasUseAnonymousCollection(): void
     {
-        Route::get('users', fn () => AnonymousResource::collection(User::orderBy('id')->get())
-            ->using(fn (User $user) => [
-                'id' => $user->id,
-                'email' => $user->email,
-            ]));
+        Route::get(
+            'users',
+            fn () => AnonymousResource::collection(User::orderBy('id')->get())
+                ->using(fn (User $user) => [
+                    'id' => $user->id,
+                    'email' => $user->email,
+                ])
+        );
 
         [$first, $second] = User::factory(2)->create();
 
@@ -152,10 +167,13 @@ class AnonymousResourceTest extends TestCase
      */
     public function resourcePreservesZeroFraction(): void
     {
-        Route::get('test', fn () => AnonymousResource::make([
-            'one_half' => 0.5,
-            'one' => 1.0,
-        ]));
+        Route::get(
+            'test',
+            fn () => AnonymousResource::make([
+                'one_half' => 0.5,
+                'one' => 1.0,
+            ])
+        );
 
         $this->getJson('test')
             ->assertOk()
