@@ -2,6 +2,23 @@
 
 All notable changes to `laravel-json-resources` will be documented in this file.
 
+## 1.5.0 - 2023-11-24
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/17
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/18
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/19
+- Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/21
+- Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/20
+- Run tests on PHP 8.3 by @EdenMl in https://github.com/Soyhuce/laravel-json-resources/pull/22
+
+### New Contributors
+
+- @EdenMl made their first contribution in https://github.com/Soyhuce/laravel-json-resources/pull/22
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-json-resources/compare/1.4.0...1.5.0
+
 ## 1.4.0 - 2023-02-03
 
 ### What's Changed
