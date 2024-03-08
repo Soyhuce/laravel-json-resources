@@ -12,7 +12,7 @@ use Soyhuce\JsonResources\Tests\Fixtures\UserResourceCollectionPerformingQuery;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourcePerformingQueries;
 
 /**
- * @covers \Soyhuce\JsonResources\Concerns\PreventDatabaseQueries
+ * @coversNothing
  */
 class PreventDatabaseQueriesTest extends TestCase
 {
