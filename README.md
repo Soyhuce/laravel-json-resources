@@ -1,9 +1,9 @@
 # An opinionated JsonResource for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/laravel-json-resources.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-json-resources)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-json-resources/run-tests?label=tests)](https://github.com/soyhuce/laravel-json-resources/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-json-resources/Check%20&%20fix%20styling?label=code%20style)](https://github.com/soyhuce/laravel-json-resources/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/soyhuce/laravel-json-resources/PHPStan?label=phpstan)](https://github.com/soyhuce/laravel-json-resources/actions?query=workflow%3APHPStan+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-json-resources/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/soyhuce/laravel-json-resources/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-json-resources/php-cs-fixer.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/soyhuce/laravel-json-resources/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub PHPStan Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/laravel-json-resources/phpstan.yml?branch=main&label=phpstan)](https://github.com/soyhuce/laravel-json-resources/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/laravel-json-resources.svg?style=flat-square)](https://packagist.org/packages/soyhuce/laravel-json-resources)
 
 Don't ever run database queries in JsonResource serialization, without overhead in production !
