@@ -6,8 +6,9 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection as IlluminateAnon
 use Soyhuce\JsonResources\Concerns\ConvertsToResponse;
 
 /**
+ * @template TKey of array-key
  * @template TResource
- * @property \Illuminate\Support\Collection<TResource> $resource
+ * @property \Illuminate\Support\Collection<TKey, TResource> $resource
  * @property class-string<TResource> $collects
  */
 class AnonymousResourceCollection extends IlluminateAnonymousResourceCollection

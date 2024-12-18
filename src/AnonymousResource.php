@@ -27,7 +27,7 @@ class AnonymousResource extends JsonResource
     /**
      * @template TCollectionType
      * @param array<array-key, TCollectionType>|\Illuminate\Pagination\AbstractPaginator|\Illuminate\Support\Collection<array-key, TCollectionType> $resource
-     * @return AnonymousCollection<EmptyAnonymousResource<TCollectionType>, TCollectionType>
+     * @return AnonymousCollection<EmptyAnonymousResource<TCollectionType>, array-key, TCollectionType>
      */
     public static function collection($resource): AnonymousCollection
     {

@@ -6,8 +6,9 @@ use Closure;
 
 /**
  * @template TResource of \Soyhuce\JsonResources\EmptyAnonymousResource
+ * @template TKey of array-key
  * @template TType
- * @extends \Soyhuce\JsonResources\AnonymousResourceCollection<TResource<TType>>
+ * @extends \Soyhuce\JsonResources\AnonymousResourceCollection<TKey, TResource<TType>>
  */
 class AnonymousCollection extends AnonymousResourceCollection
 {

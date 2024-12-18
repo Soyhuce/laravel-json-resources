@@ -14,11 +14,11 @@ class JsonResource extends IlluminateJsonResource
 
     /**
      * @param mixed $resource
-     * @return AnonymousResourceCollection<static>
+     * @return AnonymousResourceCollection<array-key, static>
      */
     public static function collection($resource): AnonymousResourceCollection
     {
-        return tap(new AnonymousResourceCollection($resource, static::class), function ($collection): void {
+        return tap(new AnonymousResourceCollection($resource, static::class), function (AnonymousResourceCollection $collection): void {
             if (property_exists(static::class, 'preserveKeys')) {
                 $collection->preserveKeys = (new ReflectionClass(static::class))
                     ->newInstanceWithoutConstructor()
