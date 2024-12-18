@@ -14,7 +14,7 @@ class JsonResource extends IlluminateJsonResource
 
     /**
      * @param mixed $resource
-     * @return \Soyhuce\JsonResources\AnonymousResourceCollection<static>
+     * @return AnonymousResourceCollection<static>
      */
     public static function collection($resource): AnonymousResourceCollection
     {
@@ -29,7 +29,7 @@ class JsonResource extends IlluminateJsonResource
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @return array<array-key, mixed>|\Illuminate\Contracts\Support\Arrayable<array-key, mixed>|JsonSerializable
+     * @return array<array-key, mixed>|Arrayable<array-key, mixed>|JsonSerializable
      */
     public function toArray($request): array|Arrayable|JsonSerializable
     {

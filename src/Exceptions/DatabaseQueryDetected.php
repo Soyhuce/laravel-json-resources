@@ -4,6 +4,7 @@ namespace Soyhuce\JsonResources\Exceptions;
 
 use Exception;
 use Illuminate\Support\Str;
+use function sprintf;
 
 class DatabaseQueryDetected extends Exception
 {
