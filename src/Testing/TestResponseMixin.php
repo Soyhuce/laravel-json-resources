@@ -5,7 +5,7 @@ namespace Soyhuce\JsonResources\Testing;
 use Closure;
 
 /**
- * @mixin \Illuminate\Testing\TestResponse
+ * @mixin \Illuminate\Testing\TestResponse<\Symfony\Component\HttpFoundation\Response>
  */
 class TestResponseMixin
 {

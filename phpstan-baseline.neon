@@ -1,47 +1,62 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:collection\\(\\) has parameter \\$resource with generic class Illuminate\\\\Pagination\\\\AbstractPaginator but does not specify its types\\: TValue$#"
+			message: '#^Called ''env'' outside of the config directory which returns null when the config is cached, use ''config''\.$#'
+			identifier: larastan.noEnvCallsOutsideOfConfig
+			count: 1
+			path: config/json-resources.php
+
+		-
+			message: '#^Method Soyhuce\\JsonResources\\AnonymousResource\:\:collection\(\) has parameter \$resource with generic class Illuminate\\Pagination\\AbstractPaginator but does not specify its types\: TValue$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/AnonymousResource.php
 
 		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\AnonymousResource\\:\\:collection\\(\\) should return Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource\\<TCollectionType\\>, TCollectionType\\> but returns Soyhuce\\\\JsonResources\\\\AnonymousCollection\\<Soyhuce\\\\JsonResources\\\\EmptyAnonymousResource, mixed\\>\\.$#"
+			message: '#^Method Soyhuce\\JsonResources\\AnonymousResource\:\:collection\(\) should return Soyhuce\\JsonResources\\AnonymousCollection\<Soyhuce\\JsonResources\\EmptyAnonymousResource\<TCollectionType\>, \(int\|string\), TCollectionType\> but returns Soyhuce\\JsonResources\\AnonymousCollection\<Soyhuce\\JsonResources\\EmptyAnonymousResource, \(int\|string\), mixed\>\.$#'
+			identifier: return.type
 			count: 1
 			path: src/AnonymousResource.php
 
 		-
-			message: "#^Parameter \\#2 \\$replace of static method Illuminate\\\\Support\\\\Str\\:\\:replaceArray\\(\\) expects iterable\\<string\\>, array\\<int, mixed\\> given\\.$#"
+			message: '#^Parameter \#2 \$replace of static method Illuminate\\Support\\Str\:\:replaceArray\(\) expects iterable\<string\>, array\<int, mixed\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Exceptions/DatabaseQueryDetected.php
 
 		-
-			message: "#^Access to an undefined property Soyhuce\\\\JsonResources\\\\JsonResource\\:\\:\\$preserveKeys\\.$#"
+			message: '#^Access to an undefined property Soyhuce\\JsonResources\\JsonResource\:\:\$preserveKeys\.$#'
+			identifier: property.notFound
 			count: 1
 			path: src/JsonResource.php
 
 		-
-			message: "#^Creating callable from a non\\-native method stdClass\\:\\:format\\(\\)\\.$#"
+			message: '#^Creating callable from a non\-native method stdClass\:\:format\(\)\.$#'
+			identifier: callable.nonNativeMethod
 			count: 1
 			path: src/JsonResource.php
 
 		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\JsonResource\\:\\:collection\\(\\) should return Soyhuce\\\\JsonResources\\\\AnonymousResourceCollection\\<static\\(Soyhuce\\\\JsonResources\\\\JsonResource\\)\\> but returns Soyhuce\\\\JsonResources\\\\AnonymousResourceCollection\\<mixed\\>\\.$#"
+			message: '#^Method Soyhuce\\JsonResources\\JsonResource\:\:collection\(\) should return Soyhuce\\JsonResources\\AnonymousResourceCollection\<\(int\|string\), static\(Soyhuce\\JsonResources\\JsonResource\)\> but returns Soyhuce\\JsonResources\\AnonymousResourceCollection\<\(int\|string\), mixed\>\.$#'
+			identifier: return.type
 			count: 1
 			path: src/JsonResource.php
 
 		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\JsonResource\\:\\:toArray\\(\\) should return array\\|Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|JsonSerializable but returns mixed\\.$#"
+			message: '#^Method Soyhuce\\JsonResources\\JsonResource\:\:toArray\(\) should return array\<mixed\>\|Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|JsonSerializable but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/JsonResource.php
 
 		-
-			message: "#^Creating callable from a non\\-native method stdClass\\:\\:format\\(\\)\\.$#"
+			message: '#^Creating callable from a non\-native method stdClass\:\:format\(\)\.$#'
+			identifier: callable.nonNativeMethod
 			count: 1
 			path: src/ResourceCollection.php
 
 		-
-			message: "#^Method Soyhuce\\\\JsonResources\\\\ResourceCollection\\:\\:toArray\\(\\) should return array\\|Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|JsonSerializable but returns mixed\\.$#"
+			message: '#^Method Soyhuce\\JsonResources\\ResourceCollection\:\:toArray\(\) should return array\<mixed\>\|Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), mixed\>\|JsonSerializable but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/ResourceCollection.php
 
