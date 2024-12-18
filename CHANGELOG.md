@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-json-resources` will be documented in this file.
 
+## 1.6.0 - 2024-03-08
+
+### What's Changed
+
+* Add support for Laravel 11 by @bastien-phi in https://github.com/Soyhuce/laravel-json-resources/pull/24
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-json-resources/compare/1.5.0...1.6.0
+
 ## 1.5.0 - 2023-11-24
 
 ### What's Changed
