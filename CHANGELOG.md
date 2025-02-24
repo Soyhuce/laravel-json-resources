@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-json-resources` will be documented in this file.
 
+## 1.8.0 - 2025-02-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/28
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/Soyhuce/laravel-json-resources/pull/29
+* Run tests with Laravel 12 by @bastien-phi in https://github.com/Soyhuce/laravel-json-resources/pull/30
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-json-resources/compare/1.7.0...1.8.0
+
 ## 1.7.0 - 2024-12-18
 
 ### What's Changed
