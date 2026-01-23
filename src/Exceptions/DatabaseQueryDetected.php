@@ -9,7 +9,7 @@ use function sprintf;
 class DatabaseQueryDetected extends Exception
 {
     /**
-     * @param array<array{query: string, bindings: array<int, mixed>, time: int}> $queryLog
+     * @param array<array{query: string, bindings: array<mixed>, time: float|null}> $queryLog
      */
     public static function fromQueryLog(array $queryLog): self
     {
@@ -27,7 +27,7 @@ class DatabaseQueryDetected extends Exception
     }
 
     /**
-     * @param array{query: string, bindings: array<int, mixed>, time: int} $query
+     * @param array{query: string, bindings: array<mixed>, time: float|null} $query
      */
     protected static function formatQuery(array $query): string
     {
