@@ -5,20 +5,19 @@ namespace Soyhuce\JsonResources\Tests;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use Soyhuce\JsonResources\JsonResource;
 use Soyhuce\JsonResources\Tests\Fixtures\User;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResource;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourceWithFloat;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourceWithHash;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourceWithMethod;
 
-/**
- * @covers \Soyhuce\JsonResources\JsonResource
- */
+#[CoversClass(JsonResource::class)]
 class JsonResourceTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function responseIsCorrectlyFormattedForMake(): void
     {
         Route::get(
@@ -36,9 +35,7 @@ class JsonResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function responseIsCorrectlyFormattedForCollection(): void
     {
         Route::get(
@@ -63,9 +60,7 @@ class JsonResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function responseIsCorrectlyFormattedForPagination(): void
     {
         Route::get(
@@ -91,9 +86,7 @@ class JsonResourceTest extends TestCase
             ->assertJsonStructure(['data', 'links', 'meta']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function responseIsHasZeroFractionPreserved(): void
     {
         Route::get(
@@ -118,9 +111,7 @@ class JsonResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function jsonResourceCanHaveDependencyInjected(): void
     {
         Route::get(
@@ -138,9 +129,7 @@ class JsonResourceTest extends TestCase
         $this->assertTrue(Hash::check($data[1]['id'], $data[1]['hash']));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function eachResourceCanBeCalled(): void
     {
         Route::get(

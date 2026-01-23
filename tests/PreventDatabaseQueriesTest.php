@@ -4,6 +4,8 @@ namespace Soyhuce\JsonResources\Tests;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\JsonResources\Exceptions\DatabaseQueryDetected;
 use Soyhuce\JsonResources\JsonResources;
 use Soyhuce\JsonResources\Tests\Fixtures\User;
@@ -11,9 +13,7 @@ use Soyhuce\JsonResources\Tests\Fixtures\UserResource;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourceCollectionPerformingQuery;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourcePerformingQueries;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class PreventDatabaseQueriesTest extends TestCase
 {
     protected function setUp(): void
@@ -23,9 +23,7 @@ class PreventDatabaseQueriesTest extends TestCase
         JsonResources::preventDatabaseQueries();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noQueryIsAllowedUsingMake(): void
     {
         Route::get(
@@ -46,9 +44,7 @@ class PreventDatabaseQueriesTest extends TestCase
         $this->getJson("users/{$user->id}");
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noQueryIsAllowedUsingCollection(): void
     {
         Route::get(
@@ -70,9 +66,7 @@ class PreventDatabaseQueriesTest extends TestCase
         $this->getJson('users');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noQueryIsAllowedUsingPaginate(): void
     {
         Route::get(
@@ -94,9 +88,7 @@ class PreventDatabaseQueriesTest extends TestCase
         $this->getJson('users');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noQueryIsAllowedUsingResourceCollection(): void
     {
         Route::get(
@@ -117,9 +109,7 @@ class PreventDatabaseQueriesTest extends TestCase
         $this->getJson('users');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function queryPreventionCanBeDisabled(): void
     {
         JsonResources::allowDatabaseQueries();
@@ -135,9 +125,7 @@ class PreventDatabaseQueriesTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function queryIsAllowedOutsideResource(): void
     {
         Route::get('users/{id}', function ($id) {
@@ -153,9 +141,7 @@ class PreventDatabaseQueriesTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function queryIsAllowedInTest(): void
     {
         Route::post('users/{email}', function ($email) {
@@ -171,9 +157,7 @@ class PreventDatabaseQueriesTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => 'some-value']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function queryLogIsRespected(): void
     {
         DB::enableQueryLog();
@@ -193,9 +177,7 @@ class PreventDatabaseQueriesTest extends TestCase
         $this->assertCount(3, DB::getQueryLog());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function queryLogIsRespectedButCanFail(): void
     {
         DB::enableQueryLog();

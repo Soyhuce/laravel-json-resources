@@ -3,14 +3,14 @@
 namespace Soyhuce\JsonResources\Tests;
 
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\JsonResources\JsonResources;
 use Soyhuce\JsonResources\Tests\Fixtures\User;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourceCollection;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResourceCollectionWithFloat;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class ResourceCollectionTest extends TestCase
 {
     protected function setUp(): void
@@ -20,9 +20,7 @@ class ResourceCollectionTest extends TestCase
         JsonResources::preventDatabaseQueries();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function responseIsCorrectlyFormattedForCollectionWithResourceDiscovery(): void
     {
         Route::get('users', fn () => UserResourceCollection::make(User::orderBy('id')->get()));
@@ -44,9 +42,7 @@ class ResourceCollectionTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function responseIsCorrectlyFormattedForCollectionWithoutResourceDiscovery(): void
     {
         Route::get('users', fn () => UserResourceCollectionWithFloat::make(User::orderBy('id')->get()));

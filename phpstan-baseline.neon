@@ -7,7 +7,7 @@ parameters:
 			path: config/json-resources.php
 
 		-
-			message: '#^Method Soyhuce\\JsonResources\\AnonymousResource\:\:collection\(\) has parameter \$resource with generic class Illuminate\\Pagination\\AbstractPaginator but does not specify its types\: TValue$#'
+			message: '#^Method Soyhuce\\JsonResources\\AnonymousResource\:\:collection\(\) has parameter \$resource with generic class Illuminate\\Pagination\\AbstractPaginator but does not specify its types\: TKey, TValue$#'
 			identifier: missingType.generics
 			count: 1
 			path: src/AnonymousResource.php
@@ -19,7 +19,7 @@ parameters:
 			path: src/AnonymousResource.php
 
 		-
-			message: '#^Parameter \#2 \$replace of static method Illuminate\\Support\\Str\:\:replaceArray\(\) expects iterable\<string\>, array\<int, mixed\> given\.$#'
+			message: '#^Parameter \#2 \$replace of static method Illuminate\\Support\\Str\:\:replaceArray\(\) expects iterable\<string\>, array\<mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Exceptions/DatabaseQueryDetected.php

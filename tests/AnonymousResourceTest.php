@@ -3,18 +3,16 @@
 namespace Soyhuce\JsonResources\Tests;
 
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\JsonResources\AnonymousResource;
 use Soyhuce\JsonResources\Tests\Fixtures\User;
 use Soyhuce\JsonResources\Tests\Fixtures\UserWithNameResource;
 
-/**
- * @covers \Soyhuce\JsonResources\AnonymousResource
- */
+#[CoversClass(AnonymousResource::class)]
 class AnonymousResourceTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function responseIsCorrectlyFormattedForMake(): void
     {
         Route::get(
@@ -38,9 +36,7 @@ class AnonymousResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nullIsCorrectlyTreatedForRootResource(): void
     {
         Route::get(
@@ -59,9 +55,7 @@ class AnonymousResourceTest extends TestCase
             ->assertJsonPath('data', []);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function innerAnonymousIsCorrectlyTreated(): void
     {
         Route::get(
@@ -87,9 +81,7 @@ class AnonymousResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function innerAnonymousWithNullIsCorrectlyTreated(): void
     {
         Route::get(
@@ -108,9 +100,7 @@ class AnonymousResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function anonymousResourceCasUseAnonymousCollection(): void
     {
         Route::get(
@@ -138,9 +128,7 @@ class AnonymousResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function formatterIsNullable(): void
     {
         Route::get('users/{id}', function ($id) {
@@ -162,9 +150,7 @@ class AnonymousResourceTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resourcePreservesZeroFraction(): void
     {
         Route::get(
