@@ -9,10 +9,10 @@ class QueryLog
 {
     private bool $wasLogging;
 
-    /** @var array<array{query: string, bindings: array<mixed>, time: int}> */
+    /** @var array<array{query: string, bindings: array<mixed>, time: float|null}> */
     private array $initialLog;
 
-    /** @var array<array{query: string, bindings: array<mixed>, time: int}> */
+    /** @var array<array{query: string, bindings: array<mixed>, time: float|null}> */
     private array $finalLog;
 
     public function __construct()
@@ -38,7 +38,7 @@ class QueryLog
     }
 
     /**
-     * @return array<array{query: string, bindings: array<mixed>, time: int}>
+     * @return array<array{query: string, bindings: array<mixed>, time: float|null}>
      */
     public function getLogs(): array
     {

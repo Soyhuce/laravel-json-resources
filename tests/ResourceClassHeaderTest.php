@@ -3,17 +3,15 @@
 namespace Soyhuce\JsonResources\Tests;
 
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\JsonResources\Tests\Fixtures\User;
 use Soyhuce\JsonResources\Tests\Fixtures\UserResource;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class ResourceClassHeaderTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function responseCanAssertUsedResource(): void
     {
         Route::get('users/{id}', fn ($id) => UserResource::make(User::find($id)));
@@ -24,9 +22,7 @@ class ResourceClassHeaderTest extends TestCase
             ->assertJsonResource(UserResource::class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function responseCanAssertUsedResourceOnCollection(): void
     {
         Route::get('users', fn () => UserResource::collection(User::orderBy('id')->get()));
