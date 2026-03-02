@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-json-resources` will be documented in this file.
 
+## 1.9.0 - 2026-03-02
+
+### What's Changed
+
+* Add support for PHP 8.5 in https://github.com/Soyhuce/laravel-json-resources/pull/37
+
+**Full Changelog**: https://github.com/Soyhuce/laravel-json-resources/compare/1.8.0...1.9.0
+
 ## 1.8.0 - 2025-02-24
 
 ### What's Changed
